@@ -1,10 +1,15 @@
-# Maths Notes
-|sl no|Problem| Link |
-|--|---|--|
-|1.|Extraction of Digits|[Link](https://www.geeksforgeeks.org/problems/count-digits-1606889545/1)|
+# **Maths Notes**
+|sl no|Problem Variants|
+|--|---|
+|1.|[Extraction of digits](#1-concept-extraction-of-digits)|
+|2.|[Count no. of digits in a number](#11-count-the-no-of-digits-in-a-number)|
+|3.|[Reverse a no.](#12-reverse-a-number)|
+|4.|[Check if the no. is Palindrome](#13-check-if-the-given-number-is-a-palindrome)|
+|5.|[Armstrong no.](#14-armstrong-number)|
+|6.|[Print all divisors](#concept-2-print-all-the-divisors)|
+|7.|[Prime no.s](#21-prime-numbers)|
 
-
-### **1. CONCEPT: Extraction of digits**
+### **CONCEPT 1: Extraction of digits**
 - make use of '/' and '%' operators
 
 ```cpp
@@ -41,9 +46,11 @@ int noOfDigits(int n){
     return count;
 }
 ```
+- **Time Complexity**: `O(1)`
+- **Space Complexity**: `O(1)`
 
 ### **1.2 Reverse a Number**
-
+#### **Method 1**: using the extraction of digits logic
 ```cpp
 int reverseNum(int n){
     int reverse = 0;
@@ -55,9 +62,11 @@ int reverseNum(int n){
     return reverse;
 }
 ```
-
+- **Time complexity** = `O(log10(n))`
+- **Space complexity** = `O(1)` 
 
 ### **1.3. Check if the given number is a palindrome**
+#### **Method 1**: using the extraction of digits logic
 ```cpp
 bool isPalindrome(int n){
     int originalNum = n;
@@ -72,9 +81,11 @@ bool isPalindrome(int n){
     return (originalNum == reverseNum);
 }
 ```
+- **Time complexity** = `O(log10(n))` 
+- **Space complexity** = `O(1)` 
 
 ### **1.4 Armstrong Number**
-
+#### **Method 1**: using the extraction of digits logic
 ```cpp
 bool isArmstrongNumber(int n){
     int num = n;
@@ -89,9 +100,11 @@ bool isArmstrongNumber(int n){
     return (num == armstrong);
 }
 ```
+- **Time complexity** = `O(log10(n))` 
+- **Space complexity** = `O(1)` 
 
-1.5 Print all the Divisors
-tc=o(n)
+### **CONCEPT 2: Print all the Divisors**
+#### **Method 1**: Brute force
 ```cpp
 void printAllDivisors(int n){
     for(int i = 1; i <= n; i++){
@@ -99,7 +112,10 @@ void printAllDivisors(int n){
     }
 }
 ```
+- **Time complexity** = `O(n)` 
+- **Space complexity** = `O(1)` 
 
+#### **Method 2**: Optimal Approach
 ```cpp
 void printAllDivisor(int n){
     vector<int> ls;
@@ -119,9 +135,11 @@ void printAllDivisor(int n){
     cout << endl;
 }
 ```
+- **Time complexity** = `O(sqrt(n))` for the question, but total complexity of this function is `O(sqrt(n) + nlog(n) + n)`
+- **Space complexity** = `O(1)` 
 
-1.6 Prime Numbers
-
+### **2.1 Prime Numbers**
+#### **Method 1**: Using the definition of Prime no.s - it has only 2 divisors - 1 and the no. itself
 ```cpp
 bool isPrime1(int n){
     int count = 0;
@@ -131,7 +149,10 @@ bool isPrime1(int n){
     return (count == 2);
 }
 ```
+- **Time complexity** = `O(n)` 
+- **Space complexity** = `O(1)` 
 
+#### **Method 2**:  Print all the Divisors method
 ```cpp
 bool isPrime2(int n){
     int count = 0;
@@ -144,3 +165,6 @@ bool isPrime2(int n){
     return (count == 2);
 }
 ```
+- **Time complexity** = `O(sqrt(n))` 
+- **Space complexity** = `O(1)` 
+

@@ -11,8 +11,19 @@ void gcd1(int n1, int n2){
     cout << gcd << endl;
 }
 
+// Euclidian Algorithm: greater%smaller until one of them is zero
 // optimised approach
-// method 2:
+// method 2: TC = O(log$(min(n1, n2))), SC=O(1)
+// $ -> bcoz we dont know the extact no. by which it reduces, everytime it fluctuates
+void gcd2(int n1, int n2){
+    while(n1 > 0 && n2 > 0){
+        if(n1 > n2) n1 = n1 % n2;
+        else n2 = n2 % n1;
+    }
+
+    int gcd = (n1 == 0) ? n2 : n1;
+    cout << gcd << endl;
+}
 
 int main(){
     int n1, n2;
@@ -22,6 +33,6 @@ int main(){
     cin >> n2;
 
     gcd1(n1, n2);
-
+    gcd2(n1, n2);
     return 0;
 }
