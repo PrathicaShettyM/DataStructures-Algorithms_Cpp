@@ -7,7 +7,12 @@
 |4.|[Check if the no. is Palindrome](#13-check-if-the-given-number-is-a-palindrome)|
 |5.|[Armstrong no.](#14-armstrong-number)|
 |6.|[Print all divisors](#concept-2-print-all-the-divisors)|
-|7.|[Prime no.s](#21-prime-numbers)|
+|7.|[Check if the no. is a Prime no.](#21-prime-numbers)|
+|8.|[GCD or HCF]()|
+|9.|[Power Exponentiation]()|
+|10.|[Print all the prime factors of the number]()|
+|11.|[Sieve of Eratosthenes]()|
+
 
 ### **CONCEPT 1: Extraction of digits**
 - make use of '/' and '%' operators
@@ -168,3 +173,64 @@ bool isPrime2(int n){
 - **Time complexity** = `O(sqrt(n))` 
 - **Space complexity** = `O(1)` 
 
+#### **CONCEPT 3: Power Exponentiation**
+- Intution for the solving the problem
+![alt text](/Maths/images/9_power.png)
+```cpp
+float exponent(int num, int power){
+    int p = power;
+    float ans = 1;
+
+    while(power > 0){
+        if(power % 2 == 1){ // odd power
+            // multiply the answer by num and reduce the power by 1
+            ans *= num;
+            power -= 1;
+        } else { // even power
+            // square the num and reduce the power by 2
+            num *= num;
+            power /= 2;
+        }
+    }
+
+    if(p < 0) return (1.0)/ans;
+
+    return ans;
+}
+```
+- **Time Complexity**: `O(log2(n))` - because almost all the time the power gets reduces by 2
+- **Space Complexity**: `O(1)`
+
+#### **CONCEPT 4: Sieve of Eratosthenes**
+- This is algorithm is used to find the prime no.s in a range
+- Example: find the prime no.s from 1 to 31 - 2 3 5 7 11 13 17 19 23 29 31
+```cpp
+void sieveOfEratosthenes(int n){
+    // take an array of size n+1 to include the nth no.
+    int primes[n+1];
+
+    // fill all the places by 1 : assume everything is prime starting from 2
+    for(int i = 2; i <= n; i++){
+        primes[i] = 1;
+    }
+
+    // mark the multiples of the prime as zero coz it never be prime
+    for(int i = 2; i*i <= n; i++){
+        if(primes[i] == 1){ // if the no. is a prime
+            for(int j = i*i; j <= n; j+=i){ // start with the sqaure of tht prime coz its smaller valued multiples would have been covered earlier
+                primes[j] = 0; // mark the multiples of tht prime as zero
+            }
+        }
+    }
+
+    // print all the primes
+    for(int i = 2; i <= n; i++){
+        if(primes[i] == 1) cout << i << " ";
+    }
+
+    cout << endl;
+}
+```
+- **Time Complexity** = `O(n*log(log(n)))`
+- **Space Complexity** = `O(1) `
+- **Note**: just remember the time complexity, proof is not required
